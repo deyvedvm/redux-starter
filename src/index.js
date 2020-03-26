@@ -1,17 +1,14 @@
-const sayHello = () => "Hello World";
+import {compose, pipe} from 'lodash/fp';
 
-const greet = fnMessage => {
-    console.log(fnMessage());
-};
+let input = "    Typescript     ";
 
-greet(sayHello);
+const trim = str => str.trim();
+const wrap = type => str => `<${type}>${str}</${type}>`;
+const toUpperCase = str => str.toUpperCase();
 
-let numbers = [1, 2, 3, 4];
+const transform = pipe(trim, toUpperCase, wrap("div"));
 
-console.log(numbers);
+const result = transform(input);
 
-const sum = numbers.reduce((a, b) => a + b);
+console.log(result);
 
-console.log(sum);
-
-console.log(numbers.map(number => number * 2));
