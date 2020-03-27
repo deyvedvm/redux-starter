@@ -1,14 +1,20 @@
-import {compose, pipe} from 'lodash/fp';
+const person = {
+    name: "Deyve",
+    address: {
+        country: "Canada",
+        city: "Vancouver"
+    }
+};
 
-let input = "    Typescript     ";
+const personUpdated = {
+    ...person,
+    name: "David",
+    address: {
+        ...person.address,
+        city: "Toronto"
+    },
+    age: 41
+};
 
-const trim = str => str.trim();
-const wrap = type => str => `<${type}>${str}</${type}>`;
-const toUpperCase = str => str.toUpperCase();
-
-const transform = pipe(trim, toUpperCase, wrap("div"));
-
-const result = transform(input);
-
-console.log(result);
-
+console.log(person);
+console.log(personUpdated);
