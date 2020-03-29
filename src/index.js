@@ -1,20 +1,14 @@
-const person = {
-    name: "Deyve",
-    address: {
-        country: "Canada",
-        city: "Vancouver"
-    }
-};
+import {produce} from "immer";
 
-const personUpdated = {
-    ...person,
-    name: "David",
-    address: {
-        ...person.address,
-        city: "Toronto"
-    },
-    age: 41
-};
+let book = {title: "Bible"};
 
-console.log(person);
-console.log(personUpdated);
+function publish(book) {
+    return produce(book, draftBook => {
+        draftBook.isPublished = true;
+    })
+}
+
+console.log(book);
+
+console.log(publish(book));
+
