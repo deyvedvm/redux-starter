@@ -1,10 +1,14 @@
-import {createReducer} from "@reduxjs/toolkit";
+import {configureStore, createAction, createReducer} from "@reduxjs/toolkit";
 
-import {bugAdded, bugRemoved, bugResolved} from "./actions";
+export const bugAdded = createAction('createAction');
+
+export const bugResolved = createAction('bugResolved');
+
+export const bugRemoved = createAction('bugRemoved');
 
 let lastId = 0;
 
-export default createReducer([],
+const reducer = createReducer([],
     {
         [bugAdded.type]: (state, action) => {
             state.push({
@@ -24,3 +28,8 @@ export default createReducer([],
             state.splice(index, 1);
         }
     });
+
+
+const store = configureStore({reducer});
+
+export default store;
