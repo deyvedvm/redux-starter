@@ -1,10 +1,13 @@
-import store from "./store/bugs/store";
+import store from "./store/store";
 
 import {bugAdded, bugRemoved, bugResolved} from "./store/bugs/store";
+import {projectAdded} from "./store/projects/store";
 
 const unsubscribe = store.subscribe(() => {
     console.log("Store changed!", store.getState());
 });
+
+store.dispatch(projectAdded({name: 'New Project'}));
 
 store.dispatch(bugAdded({description: 'New Bug 1'}));
 store.dispatch(bugAdded({description: 'New Bug 2'}));

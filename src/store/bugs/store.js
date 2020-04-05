@@ -1,4 +1,4 @@
-import {configureStore, createSlice} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
 let lastId = 0;
 
@@ -26,6 +26,4 @@ const slice = createSlice({
 
 export const {bugAdded, bugRemoved, bugResolved} = slice.actions;
 
-const store = configureStore({reducer: slice.reducer});
-
-export default store;
+export default slice.reducer;
