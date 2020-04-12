@@ -1,11 +1,11 @@
 import store from "./store/store";
 
-import {bugAdded, bugRemoved, bugResolved} from "./store/bugs/store";
+import {bugAdded, bugRemoved, bugResolved, selectUnresolvedBugs} from "./store/bugs/store";
 import {projectAdded} from "./store/projects/store";
 
-const unsubscribe = store.subscribe(() => {
-    console.log("Store changed!", store.getState());
-});
+// const unsubscribe = store.subscribe(() => {
+//     console.log("Store changed!", store.getState());
+// });
 
 store.dispatch(projectAdded({name: 'New Project'}));
 
@@ -17,6 +17,8 @@ store.dispatch(bugResolved({id: 1}));
 
 // unsubscribe();
 
-store.dispatch(bugRemoved({id: 1}));
+// store.dispatch(bugRemoved({id: 1}));
 
 console.log(store.getState());
+
+console.log(selectUnresolvedBugs(store.getState()));
